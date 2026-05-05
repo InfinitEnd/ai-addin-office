@@ -12,7 +12,7 @@
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="REMPLACER_PAR_VOTRE_URL/taskpane.html"/>
+    <SourceLocation DefaultValue="https://github.com/InfinitEnd/ai-addin-office.git"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>
