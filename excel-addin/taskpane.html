@@ -7,275 +7,42 @@
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0a0f1e;
-      --surface: #111827;
-      --surface2: #1a2235;
-      --accent: #00e5a0;
-      --accent2: #0ea5e9;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --border: #1e2d45;
-      --error: #f87171;
-    }
-
+    :root { --bg: #0a0f1e; --surface: #111827; --surface2: #1a2235; --accent: #00e5a0; --accent2: #0ea5e9; --text: #e2e8f0; --muted: #64748b; --border: #1e2d45; --error: #f87171; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Syne', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      padding: 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #0a0f1e 0%, #0d1526 100%);
-    }
-
-    .logo {
-      width: 32px; height: 32px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-
-    header h1 {
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
-
-    header span {
-      font-size: 11px;
-      color: var(--accent);
-      font-family: 'Space Mono', monospace;
-      background: rgba(0,229,160,0.1);
-      padding: 2px 8px;
-      border-radius: 20px;
-      border: 1px solid rgba(0,229,160,0.2);
-      margin-left: auto;
-    }
-
-    .api-section {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .api-section label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 6px;
-      font-family: 'Space Mono', monospace;
-    }
-
-    .api-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    input[type="password"], input[type="text"] {
-      flex: 1;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
+    body { font-family: 'Syne', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #0a0f1e 0%, #0d1526 100%); }
+    .logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    header h1 { font-size: 15px; font-weight: 800; letter-spacing: -0.3px; }
+    header span { font-size: 11px; color: var(--accent); font-family: 'Space Mono', monospace; background: rgba(0,229,160,0.1); padding: 2px 8px; border-radius: 20px; border: 1px solid rgba(0,229,160,0.2); margin-left: auto; }
+    .api-section { padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .api-section label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); display: block; margin-bottom: 6px; font-family: 'Space Mono', monospace; }
+    .api-row { display: flex; gap: 8px; }
+    input[type="password"] { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font-family: 'Space Mono', monospace; font-size: 12px; outline: none; transition: border-color 0.2s; }
     input:focus { border-color: var(--accent); }
-
-    .save-btn {
-      background: var(--accent);
-      color: #0a0f1e;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 11px;
-      cursor: pointer;
-      font-family: 'Syne', sans-serif;
-      transition: opacity 0.2s;
-    }
-
-    .save-btn:hover { opacity: 0.85; }
-
-    .tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .tab {
-      flex: 1;
-      padding: 10px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-      letter-spacing: 0.5px;
-    }
-
-    .tab.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    .tab-content { display: none; flex: 1; flex-direction: column; padding: 16px; gap: 12px; }
+    .save-btn { background: var(--accent); color: #0a0f1e; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 11px; cursor: pointer; font-family: 'Syne', sans-serif; }
+    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .tab { flex: 1; padding: 10px; text-align: center; font-size: 11px; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-content { display: none; flex: 1; flex-direction: column; padding: 16px; gap: 12px; overflow-y: auto; }
     .tab-content.active { display: flex; }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .card h3 {
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent2);
-      margin-bottom: 10px;
-      font-family: 'Space Mono', monospace;
-    }
-
-    textarea {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-family: 'Syne', sans-serif;
-      font-size: 13px;
-      resize: vertical;
-      min-height: 80px;
-      outline: none;
-      line-height: 1.5;
-      transition: border-color 0.2s;
-    }
-
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    .card h3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2); margin-bottom: 10px; font-family: 'Space Mono', monospace; }
+    textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px 12px; border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 13px; resize: vertical; min-height: 70px; outline: none; line-height: 1.5; transition: border-color 0.2s; }
     textarea:focus { border-color: var(--accent2); }
-
-    .action-btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #0a0f1e;
-      border: none;
-      padding: 11px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-      font-family: 'Syne', sans-serif;
-      transition: opacity 0.2s, transform 0.1s;
-    }
-
+    .action-btn { width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0a0f1e; border: none; padding: 11px; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer; font-family: 'Syne', sans-serif; transition: opacity 0.2s, transform 0.1s; margin-top: 8px; }
     .action-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .action-btn:active { transform: translateY(0); }
-    .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .result-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 13px;
-      line-height: 1.6;
-      min-height: 60px;
-      white-space: pre-wrap;
-      font-family: 'Space Mono', monospace;
-      color: var(--text);
-    }
-
-    .result-box.loading {
-      color: var(--muted);
-      font-style: italic;
-    }
-
+    .result-box { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; line-height: 1.6; min-height: 50px; white-space: pre-wrap; font-family: 'Space Mono', monospace; color: var(--text); }
+    .result-box.loading { color: var(--muted); font-style: italic; }
     .result-box.success { border-color: rgba(0,229,160,0.3); }
     .result-box.error { border-color: var(--error); color: var(--error); }
-
-    .quick-btns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .quick-btn {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 8px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Syne', sans-serif;
-      transition: all 0.2s;
-      text-align: center;
-    }
-
-    .quick-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(0,229,160,0.05);
-    }
-
-    .status-bar {
-      padding: 8px 16px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      font-size: 10px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--muted);
-    }
-
+    .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .action-chip { background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 8px 6px; border-radius: 8px; font-size: 10px; font-weight: 600; cursor: pointer; font-family: 'Syne', sans-serif; transition: all 0.2s; text-align: center; line-height: 1.4; }
+    .action-chip:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,229,160,0.05); }
+    .select-info { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; background: var(--surface2); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); }
+    .status-bar { padding: 8px 16px; background: var(--surface); border-top: 1px solid var(--border); font-size: 10px; color: var(--muted); font-family: 'Space Mono', monospace; display: flex; align-items: center; gap: 6px; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
     .status-dot.active { background: var(--accent); animation: pulse 2s infinite; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .select-info {
-      font-size: 11px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      background: var(--surface2);
-      padding: 6px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   </style>
 </head>
 <body>
@@ -295,65 +62,65 @@
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('analyse')">📊 Analyser</div>
-  <div class="tab" onclick="switchTab('generer')">⚡ Générer</div>
-  <div class="tab" onclick="switchTab('question')">💬 Question</div>
+  <div class="tab active" onclick="switchTab('action')">⚡ Actions</div>
+  <div class="tab" onclick="switchTab('generer')">🔧 Générer</div>
+  <div class="tab" onclick="switchTab('question')">💬 Chat</div>
 </div>
 
-<!-- TAB: Analyser -->
-<div class="tab-content active" id="tab-analyse">
+<!-- TAB: Actions directes -->
+<div class="tab-content active" id="tab-action">
   <div class="select-info" id="selectionInfo">🔲 Sélectionne des cellules dans Excel</div>
 
   <div class="card">
-    <h3>Actions rapides</h3>
-    <div class="quick-btns">
-      <button class="quick-btn" onclick="quickAction('Analyse ces données et donne un résumé des tendances principales.')">📈 Tendances</button>
-      <button class="quick-btn" onclick="quickAction('Trouve les anomalies ou valeurs aberrantes dans ces données.')">🔍 Anomalies</button>
-      <button class="quick-btn" onclick="quickAction('Calcule des statistiques : moyenne, min, max, total.')">📐 Statistiques</button>
-      <button class="quick-btn" onclick="quickAction('Suggère des graphiques adaptés à ces données.')">📉 Graphiques</button>
+    <h3>Actions rapides directes</h3>
+    <div class="action-grid">
+      <button class="action-chip" onclick="doAction('Mets le texte en rouge pour les cellules avec des valeurs négatives')">🔴 Rouge si négatif</button>
+      <button class="action-chip" onclick="doAction('Surligne en jaune toutes les cellules sélectionnées')">🟡 Surligner jaune</button>
+      <button class="action-chip" onclick="doAction('Mets le texte en gras et taille 14 pour la sélection')">𝐁 Gras + taille 14</button>
+      <button class="action-chip" onclick="doAction('Trie les données par ordre croissant sur la première colonne')">🔼 Trier croissant</button>
+      <button class="action-chip" onclick="doAction('Trie les données par ordre décroissant sur la première colonne')">🔽 Trier décroissant</button>
+      <button class="action-chip" onclick="doAction('Ajuste automatiquement la largeur de toutes les colonnes utilisées')">↔️ Ajuster colonnes</button>
+      <button class="action-chip" onclick="doAction('Supprime tout le formatage des cellules sélectionnées')">🧹 Effacer format</button>
+      <button class="action-chip" onclick="doAction('Mets un fond vert pour valeurs positives et fond rouge pour valeurs négatives')">🎨 Fond vert/rouge</button>
+      <button class="action-chip" onclick="doAction('Mets la première ligne en gras avec fond bleu foncé et texte blanc')">📋 Formater en-têtes</button>
+      <button class="action-chip" onclick="doAction('Ajoute une ligne TOTAL en bas avec la somme de chaque colonne numérique')">➕ Ajouter totaux</button>
     </div>
   </div>
 
   <div class="card">
-    <h3>Analyse personnalisée</h3>
-    <textarea id="analysePrompt" placeholder="Ex: Compare les ventes du T1 et T2..."></textarea>
-    <br/>
-    <button class="action-btn" onclick="analyseData()">Analyser la sélection</button>
+    <h3>Instruction personnalisée</h3>
+    <textarea id="actionPrompt" placeholder="Ex: Mets en gras la première ligne et surligne-la en bleu&#10;Ex: Colorie en orange les cellules vides&#10;Ex: Ajoute le total en bas de la colonne B"></textarea>
+    <button class="action-btn" onclick="doAction(document.getElementById('actionPrompt').value)">⚡ Exécuter dans Excel</button>
   </div>
 
-  <div class="result-box" id="analyseResult">Les résultats apparaîtront ici...</div>
+  <div class="result-box" id="actionResult">Les actions s'appliqueront directement dans tes cellules Excel...</div>
 </div>
 
 <!-- TAB: Générer -->
 <div class="tab-content" id="tab-generer">
   <div class="card">
-    <h3>Générer du contenu</h3>
+    <h3>Générer un tableau</h3>
     <textarea id="genPrompt" placeholder="Ex: Crée un tableau de suivi des dépenses mensuelles avec 5 colonnes..."></textarea>
-    <br/>
-    <button class="action-btn" onclick="generateContent()">Générer & Insérer</button>
+    <button class="action-btn" onclick="generateContent()">Générer & Insérer dans Excel</button>
   </div>
 
   <div class="card">
-    <h3>Formules intelligentes</h3>
-    <textarea id="formulaPrompt" placeholder="Ex: Une formule pour calculer la commission si vente > 1000..." style="min-height:60px"></textarea>
-    <br/>
-    <button class="action-btn" onclick="generateFormula()">Créer la formule</button>
+    <h3>Formule intelligente</h3>
+    <textarea id="formulaPrompt" placeholder="Ex: Formule pour calculer la commission si vente > 1000..." style="min-height:60px"></textarea>
+    <button class="action-btn" onclick="generateFormula()">Créer & Insérer la formule</button>
   </div>
 
   <div class="result-box" id="genResult">Les résultats apparaîtront ici...</div>
 </div>
 
-<!-- TAB: Question -->
+<!-- TAB: Chat -->
 <div class="tab-content" id="tab-question">
   <div class="select-info" id="selectionInfo2">🔲 Sélectionne des cellules pour contexte</div>
-
   <div class="card">
     <h3>Pose une question</h3>
-    <textarea id="questionPrompt" placeholder="Ex: Quel produit a le plus vendu ce mois-ci ? Comment améliorer ces chiffres ?"></textarea>
-    <br/>
-    <button class="action-btn" onclick="askQuestion()">Poser la question</button>
+    <textarea id="questionPrompt" placeholder="Ex: Quel produit a le plus vendu ? Analyse ces données..."></textarea>
+    <button class="action-btn" onclick="askQuestion()">Envoyer</button>
   </div>
-
   <div id="chatHistory" style="display:flex; flex-direction:column; gap:8px;"></div>
 </div>
 
@@ -364,10 +131,7 @@
 
 <script>
   let geminiKey = localStorage.getItem('gemini_key') || '';
-  if (geminiKey) {
-    document.getElementById('apiKey').value = geminiKey;
-    setStatus(true, 'Clé API chargée ✓');
-  }
+  if (geminiKey) { document.getElementById('apiKey').value = geminiKey; setStatus(true, 'Clé API chargée ✓'); }
 
   function saveKey() {
     geminiKey = document.getElementById('apiKey').value.trim();
@@ -381,11 +145,10 @@
   }
 
   function switchTab(name) {
-    document.querySelectorAll('.tab').forEach((t,i) => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    const tabs = ['analyse','generer','question'];
-    const idx = tabs.indexOf(name);
-    document.querySelectorAll('.tab')[idx].classList.add('active');
+    const tabs = ['action','generer','question'];
+    document.querySelectorAll('.tab')[tabs.indexOf(name)].classList.add('active');
     document.getElementById('tab-' + name).classList.add('active');
   }
 
@@ -403,17 +166,10 @@
   }
 
   async function callGemini(prompt) {
-    if (!geminiKey) {
-      alert('Entre ta clé API Gemini d\'abord !');
-      return null;
-    }
+    if (!geminiKey) { alert('Entre ta clé API Gemini !'); return null; }
     const res = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${geminiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-      }
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) }
     );
     const data = await res.json();
     if (data.error) throw new Error(data.error.message);
@@ -426,85 +182,126 @@
     el.className = 'result-box ' + type;
   }
 
-  async function quickAction(action) {
-    const sel = await getSelection();
-    if (!sel) { showResult('analyseResult', 'Erreur: Ouvre Excel et sélectionne des cellules.', 'error'); return; }
-    document.getElementById('analysePrompt').value = action;
-    analyseData();
-  }
+  // ─── ACTION DIRECTE DANS LES CELLULES ───
+  async function doAction(instruction) {
+    if (!instruction || !instruction.trim()) return;
+    setStatus(true, 'Action en cours...');
+    showResult('actionResult', '⏳ L\'IA prépare l\'action...', 'loading');
 
-  async function analyseData() {
-    const prompt = document.getElementById('analysePrompt').value.trim();
-    if (!prompt) return;
-    showResult('analyseResult', '⏳ Analyse en cours...', 'loading');
-    setStatus(true, 'Analyse en cours...');
     try {
       const sel = await getSelection();
-      const dataStr = sel ? `Données Excel (${sel.address}):\n${JSON.stringify(sel.values)}` : 'Pas de sélection.';
-      const result = await callGemini(`${dataStr}\n\nInstruction: ${prompt}\n\nRéponds en français, de façon concise et claire.`);
-      showResult('analyseResult', result);
-      setStatus(true, 'Analyse terminée ✓');
+      const addr = sel ? sel.address : 'A1';
+      const dataStr = sel ? 'Données sélectionnées: ' + JSON.stringify(sel.values) : '';
+
+      const prompt = `Tu es un expert Excel JS Office.js. L'utilisateur veut: "${instruction}"
+Adresse de la sélection actuelle: ${addr}
+${dataStr}
+
+Retourne UNIQUEMENT un objet JSON valide avec les actions à effectuer. Types disponibles:
+- setFill: fond coloré {"type":"setFill","address":"A1","color":"#FFFF00"}
+- setFontColor: couleur texte {"type":"setFontColor","address":"A1","color":"#FF0000"}
+- setBold: gras {"type":"setBold","address":"A1","bold":true}
+- setFontSize: taille {"type":"setFontSize","address":"A1","size":14}
+- setFormula: formule {"type":"setFormula","address":"A1","formula":"=SOMME(A1:A9)"}
+- setValue: valeur {"type":"setValue","address":"A1","value":"Total"}
+- clearFill: effacer fond {"type":"clearFill","address":"A1:Z100"}
+- autoFit: ajuster colonnes {"type":"autoFit"}
+- sort: trier {"type":"sort","address":"A1:D10","column":0,"ascending":true}
+
+Format de réponse:
+{"actions":[...],"message":"description en français"}
+
+Utilise uniquement l'adresse: ${addr}
+JSON pur uniquement, rien d'autre.`;
+
+      const result = await callGemini(prompt);
+      const clean = result.replace(/```json|```/g, '').trim();
+      const parsed = JSON.parse(clean);
+
+      await Excel.run(async (context) => {
+        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        for (const action of parsed.actions) {
+          if (action.type === 'setValue') {
+            sheet.getRange(action.address).values = [[action.value]];
+          } else if (action.type === 'setFormula') {
+            sheet.getRange(action.address).formulas = [[action.formula]];
+          } else if (action.type === 'setFontColor') {
+            sheet.getRange(action.address).format.font.color = action.color;
+          } else if (action.type === 'setFill') {
+            sheet.getRange(action.address).format.fill.color = action.color;
+          } else if (action.type === 'clearFill') {
+            sheet.getRange(action.address).format.fill.clear();
+          } else if (action.type === 'setBold') {
+            sheet.getRange(action.address).format.font.bold = action.bold;
+          } else if (action.type === 'setFontSize') {
+            sheet.getRange(action.address).format.font.size = action.size;
+          } else if (action.type === 'autoFit') {
+            sheet.getUsedRange().format.autofitColumns();
+            sheet.getUsedRange().format.autofitRows();
+          } else if (action.type === 'sort') {
+            sheet.getRange(action.address).sort.apply([{ key: action.column, ascending: action.ascending }]);
+          }
+        }
+        await context.sync();
+      });
+
+      showResult('actionResult', '✅ ' + (parsed.message || 'Action effectuée dans Excel !'));
+      setStatus(true, 'Terminé ✓');
     } catch(e) {
-      showResult('analyseResult', 'Erreur: ' + e.message, 'error');
-      setStatus(false, 'Erreur API');
+      showResult('actionResult', '❌ Erreur: ' + e.message, 'error');
+      setStatus(false, 'Erreur');
     }
   }
 
   async function generateContent() {
     const prompt = document.getElementById('genPrompt').value.trim();
     if (!prompt) return;
-    showResult('genResult', '⏳ Génération en cours...', 'loading');
+    showResult('genResult', '⏳ Génération...', 'loading');
     setStatus(true, 'Génération...');
     try {
-      const result = await callGemini(
-        `Tu es un expert Excel. ${prompt}\n\nRetourne UNIQUEMENT un tableau JSON 2D (array d'arrays) représentant les cellules à insérer. Commence par les en-têtes. Format: [[col1,col2],[val1,val2],...]. Rien d'autre.`
-      );
-      // Try to parse and insert
+      const result = await callGemini('Tu es un expert Excel. ' + prompt + '\nRetourne UNIQUEMENT un tableau JSON 2D. Format: [[col1,col2],[val1,val2],...]. Rien d\'autre.');
       const clean = result.replace(/```json|```/g, '').trim();
-      try {
-        const tableData = JSON.parse(clean);
-        await insertTable(tableData);
-        showResult('genResult', '✅ Tableau inséré dans Excel !\n\n' + clean);
-      } catch {
-        showResult('genResult', result);
-      }
-      setStatus(true, 'Contenu généré ✓');
-    } catch(e) {
-      showResult('genResult', 'Erreur: ' + e.message, 'error');
-      setStatus(false, 'Erreur API');
-    }
-  }
-
-  async function insertTable(data) {
-    return new Promise((resolve) => {
-      Office.onReady(() => {
-        Excel.run(async (context) => {
-          const sheet = context.workbook.worksheets.getActiveWorksheet();
-          const range = sheet.getRange(`A1`).getResizedRange(data.length - 1, data[0].length - 1);
-          range.values = data;
-          await context.sync();
-          resolve();
-        }).catch(resolve);
+      const tableData = JSON.parse(clean);
+      await Excel.run(async (context) => {
+        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        const range = sheet.getRange('A1').getResizedRange(tableData.length - 1, tableData[0].length - 1);
+        range.values = tableData;
+        range.getRow(0).format.font.bold = true;
+        range.getRow(0).format.fill.color = '#1a3a5c';
+        range.getRow(0).format.font.color = '#ffffff';
+        sheet.getUsedRange().format.autofitColumns();
+        await context.sync();
       });
-    });
+      showResult('genResult', '✅ Tableau inséré et formaté dans Excel !');
+      setStatus(true, 'Tableau inséré ✓');
+    } catch(e) {
+      showResult('genResult', '❌ Erreur: ' + e.message, 'error');
+      setStatus(false, 'Erreur');
+    }
   }
 
   async function generateFormula() {
     const prompt = document.getElementById('formulaPrompt').value.trim();
     if (!prompt) return;
-    showResult('genResult', '⏳ Création de la formule...', 'loading');
+    showResult('genResult', '⏳ Création formule...', 'loading');
     try {
-      const result = await callGemini(
-        `Crée une formule Excel pour: ${prompt}\nRéponds UNIQUEMENT avec la formule Excel (commence par =). Puis explique-la brièvement en français.`
-      );
-      showResult('genResult', result);
-      setStatus(true, 'Formule générée ✓');
+      const result = await callGemini('Crée une formule Excel pour: ' + prompt + '\nRetourne la formule (commence par =) sur la première ligne, puis une explication courte en français.');
+      const lines = result.trim().split('\n');
+      const formula = lines.find(l => l.trim().startsWith('='));
+      if (formula) {
+        await Excel.run(async (context) => {
+          context.workbook.getSelectedRange().formulas = [[formula.trim()]];
+          await context.sync();
+        });
+        showResult('genResult', '✅ Formule insérée dans la cellule !\n\n' + result);
+      } else {
+        showResult('genResult', result);
+      }
+      setStatus(true, 'Formule insérée ✓');
     } catch(e) {
-      showResult('genResult', 'Erreur: ' + e.message, 'error');
+      showResult('genResult', '❌ Erreur: ' + e.message, 'error');
     }
   }
-
-  let chatMessages = [];
 
   async function askQuestion() {
     const question = document.getElementById('questionPrompt').value.trim();
@@ -512,37 +309,32 @@
     setStatus(true, 'Réflexion...');
     try {
       const sel = await getSelection();
-      const dataStr = sel ? `Données Excel: ${JSON.stringify(sel.values)}` : '';
-      const fullPrompt = `${dataStr}\nQuestion: ${question}\nRéponds en français.`;
-      const answer = await callGemini(fullPrompt);
+      const dataStr = sel ? 'Données Excel: ' + JSON.stringify(sel.values) : '';
+      const answer = await callGemini(dataStr + '\nQuestion: ' + question + '\nRéponds en français.');
       addChatMessage(question, answer);
       document.getElementById('questionPrompt').value = '';
       setStatus(true, 'Réponse reçue ✓');
-    } catch(e) {
-      setStatus(false, 'Erreur: ' + e.message);
-    }
+    } catch(e) { setStatus(false, 'Erreur: ' + e.message); }
   }
 
   function addChatMessage(q, a) {
     const history = document.getElementById('chatHistory');
     const bubble = document.createElement('div');
     bubble.style.cssText = 'display:flex;flex-direction:column;gap:6px;';
-    bubble.innerHTML = `
-      <div style="background:#1a2235;padding:8px 12px;border-radius:8px 8px 2px 8px;font-size:12px;color:#94a3b8;align-self:flex-end;max-width:85%">${q}</div>
-      <div style="background:#0d1f14;border:1px solid rgba(0,229,160,0.2);padding:8px 12px;border-radius:2px 8px 8px 8px;font-size:12px;line-height:1.5;max-width:95%">${a}</div>
-    `;
+    bubble.innerHTML =
+      '<div style="background:#1a2235;padding:8px 12px;border-radius:8px 8px 2px 8px;font-size:12px;color:#94a3b8;align-self:flex-end;max-width:85%">' + q + '</div>' +
+      '<div style="background:#0d1f14;border:1px solid rgba(0,229,160,0.2);padding:8px 12px;border-radius:2px 8px 8px 8px;font-size:12px;line-height:1.5;max-width:95%">' + a + '</div>';
     history.appendChild(bubble);
     history.scrollTop = history.scrollHeight;
   }
 
-  // Update selection info
   Office.onReady(() => {
     Excel.run(async (context) => {
       context.workbook.onSelectionChanged.add(async () => {
         const range = context.workbook.getSelectedRange();
         range.load('address');
         await context.sync();
-        const info = `✅ Sélection: ${range.address}`;
+        const info = '✅ Sélection: ' + range.address;
         document.getElementById('selectionInfo').textContent = info;
         document.getElementById('selectionInfo2').textContent = info;
       });
